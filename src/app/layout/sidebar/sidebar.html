@@ -5,9 +5,16 @@
       -->
 
       <ul class="nav flex-column">
-        @for (item of menuObj; track $index) {
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
+        @for (item of sideBarMenus; track item.id) {
+          <li class="nav-item" >
+            <a 
+              class="nav-link active" 
+              [class.active]="selectedMenuId === item.id"
+             (click)="selectedMenuItem(item)" href="#"
+            >
+            <!--[routerLink]="item.route"
+              routerLinkActive="active"
+              class="nav-link"> -->
               <i [class]="item.icon"></i>{{item.name}}
             </a>
           </li>
