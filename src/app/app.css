@@ -1,0 +1,11 @@
+html, body {
+  height: 100%;
+}
+
+.element {
+  height: 83vh;
+}
+
+.border_all_side{
+   border: 1px solid lightgray;
+}

@@ -1,0 +1,15 @@
+
+
+      <!-- REVIEW:
+           Excellent use of nav flex-column.
+      -->
+
+      <ul class="nav flex-column">
+        @for (item of menuObj; track $index) {
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+              <i [class]="item.icon"></i>{{item.name}}
+            </a>
+          </li>
+        }
+      </ul>

@@ -1,1 +1,31 @@
-<button class="btn btn-success">Bootstrap Added</button>
+<!-- <div class="container-fluid"> -->
+
+  <!-- REVIEW: Good choice. Enterprise applications generally use container-fluid
+       because the application should use the full browser width. -->
+
+  <!-- ================= Navbar ================= -->
+    <app-navbar></app-navbar>
+
+
+  <!-- ================= Main Layout ================= -->
+
+  <!-- REVIEW:
+       This second container-fluid is unnecessary. You already have one wrapping the entire page.Extra containers create unnecessary DOM nesting. -->
+
+  <app-app-layout></app-app-layout>
+
+
+  <!-- ================= Footer ================= -->
+
+  <!-- REVIEW:
+       Remove card-footer.
+
+       Reason: Footer is NOT inside a Bootstrap card. card-footer is only meant for Bootstrap cards.Use Bootstrap spacing utilities instead.
+  -->
+
+  <app-footer></app-footer>
+<i class="bi bi-person-circle"></i>
+<i class="bi bi-house-door"></i>
+<i class="bi bi-people"></i>
+<i class="bi bi-building"></i>
+<!-- </div> -->
