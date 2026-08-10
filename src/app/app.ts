@@ -7,7 +7,7 @@ import { AppLayout } from "./layout/app-layout/app-layout";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer, AppLayout],
+  imports: [ Navbar, Footer, AppLayout],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
