@@ -3,9 +3,9 @@ export interface User{
     name: string,
     role: string,
     email: string,
-    expr: string,
+    experience: number,
     location: string,
     image:string,
-    active: boolean,
-    skill: string
+    status: string,
+    skills: string[]
 }

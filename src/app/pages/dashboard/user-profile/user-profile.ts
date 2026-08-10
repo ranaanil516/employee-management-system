@@ -12,16 +12,19 @@ export class UserProfile {
 
   isActive :boolean= true;
   isEditing: boolean = false;
+  userId:number=0;
   users: User[] = [
-    {id:1, name:'A', role:'Sr Lead', email:'A@test.com', expr:'10', location:'Pune',image:'/logo.png',active:true,skill:'Angular'},
-    {id:2, name:'B', role:'Lead', email:'B@test.com', expr:'9', location:'Mumbai',image:'/logo.png',active:true,skill:'React'},
-    {id:3, name:'C', role:'Dev', email:'C@test.com', expr:'8', location:'Nagpur',image:'/logo.png',active:false,skill:'Extjs'},
-    {id:4, name:'D', role:'Architecture', email:'D@test.com', expr:'7', location:'Banglore',image:'/logo.png',active:true,skill:'Java'},
-    {id:5, name:'E', role:'Sr Dev', email:'E@test.com', expr:'6', location:'NY',image:'/logo.png',active:true,skill:'Python'}
+    {id:1, name:'A', role:'Sr Lead', email:'A@test.com', experience:10, location:'Pune',image:'/logo.png',status:'Active',skills:['Angular','React','Java']},
+    {id:2, name:'B', role:'Lead', email:'B@test.com', experience:9, location:'Mumbai',image:'/logo.png',status:'Inactive',skills:['React']},
+    {id:3, name:'C', role:'Dev', email:'C@test.com', experience:8, location:'Nagpur',image:'/logo.png',status:'Inactive',skills:['Extjs']},
+    {id:4, name:'D', role:'Architecture', email:'D@test.com', experience:6, location:'Banglore',image:'/logo.png',status:'Active',skills:['Java']},
+    {id:5, name:'E', role:'Sr Dev', email:'E@test.com', experience:6, location:'NY',image:'/logo.png',status:'Active',skills:['Python']}
   ];
 
   editUserProfile(user:User){
-    if(user.active)
+    if(user.status)
+      this.isEditing = true;
+      this.userId = user.id
       console.log(user);
     
   }

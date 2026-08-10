@@ -1,33 +1,44 @@
 
-@for (item of users; track item.id) {
-<div class="card text-center mb-2" style="width: 18rem;">
-  <div class="card-header">
-    
-  </div>
-  <div class="card-body">
-        <ul class="list-group list-group-flush">
-            <img class="card-img-top" [src]="item.image" height="200" width="50" alt="Card image cap">
-            <li class="list-group-item">Name:- {{item.name}}</li>
-            <li class="list-group-item">Role:- {{item.role}}</li>
-            <li class="list-group-item">Email:- {{item.email}}</li>
-            <li class="list-group-item">Skill:- {{item.skill}}</li>
-            <li class="list-group-item">Location:- {{item.location}}</li>
-            <li class="list-group-item position-relative">Status:- {{item.active}}
-            <span [class]="item.active?'text-success': 'text-danger'">
-                <i class="bi bi-circle-fill me-1"></i>
-            </span>
-            </li>
-            <!-- <li class="list-group-item">Active:- <span [class.text-success]="item.active">{{item.active}}</span></li> -->
-        </ul>
-  </div>
-  <div class="card-footer text-muted">
-    <a href="#" [class]="item.active? 'btn btn-primary': 'btn btn-danger' " (click)="isEditing = true" (click)="editUserProfile(item)">Edit Profile</a>
-  </div>
+<div class="row">
+    @for (item of users; track item.id) {
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-1">
+            <div class="card user-card text-center mb-2">
+                <div class="card-header">
+                    
+                </div>
+                <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <img class="card-img-top" [src]="item.image" height="200" width="40" alt="Card image cap">
+                            <li class="list-group-item">Name:- {{item.name}}</li>
+                            <li class="list-group-item">Role:- {{item.role}}</li>
+                            <li class="list-group-item">Email:- {{item.email}}</li>
+                            <li class="list-group-item">Skill:- 
+                                @for (skill of item.skills; track skill) {
+                                    <div class="badge bg-primary me-1">{{skill}}</div>
+                                }
+                            </li>
+                            <li class="list-group-item">Experience:- {{item.experience}} Years</li>
+                            <li class="list-group-item">Location:- {{item.location}}</li>
+                            <li class="list-group-item position-relative">Status:- {{item.status}}
+                            <span [class]="item.status == 'Active'?'text-success': 'text-danger'">
+                                <i class="bi bi-circle-fill me-1"></i>
+                            </span>
+                            </li>
+                        </ul>
+                </div>
+                <div class="card-footer text-muted">
+                    <button type="button" [class]="item.status? 'btn btn-primary': 'btn btn-danger' " (click)="editUserProfile(item)">Edit Profile</button>
+                </div>
 
-  @if (isEditing) {
-  <div class="alert alert-info mt-3">
-    Editing profile...
-  </div>
-}
+                @if (isEditing && item.id == userId) {
+                <div class="alert alert-info mt-3">
+                    Editing profile...
+                </div>
+                }
+                </div>
+        </div>
+    }
 </div>
-}
+
+
+
