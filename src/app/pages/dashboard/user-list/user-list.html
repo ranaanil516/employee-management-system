@@ -1,0 +1,38 @@
+<div class="mb-3">
+
+    <button
+        class="btn btn-warning"
+        (click)="resetAllCards()">
+
+        Reset All Cards
+
+    </button>
+
+</div>
+<div class="row">
+    @for (user of users; track user.id) {
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-1">
+            <app-user-card 
+            [userFromChild]="user"
+            
+            (action)="handleAction($event)"
+            ></app-user-card>
+
+
+
+        @if (isEditing && user.id == userId) {
+        <div class="alert alert-info mt-3">
+            Editing profile...
+        </div>
+        }  
+        </div>
+    }
+        <!-- <span class="">
+        <button class="btn btn-primary" (click)="resetAllCards()">
+            Reset All Cards
+        </button>
+        </span> -->
+</div>
+
+
+
