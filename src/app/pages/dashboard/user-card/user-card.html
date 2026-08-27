@@ -2,21 +2,31 @@
     <div class="card-header"></div>
     <div class="card-body">
         <ul class="list-group list-group-flush">
-            <img class="card-img-top" [src]="userFromChild.image" height="200" width="40" alt="Card image cap">
-            <li class="list-group-item">Name:- {{userFromChild.name}}</li>
-            <li class="list-group-item">Role:- {{userFromChild.role}}</li>
+            <img class="card-img-top" [src]="userFromChild.image" height="100" width="40" alt="Card image cap">
+            <li class="list-group-item">Name:- {{currentName | uppercase}}</li>
+            <li class="list-group-item">Role:- {{userFromChild.role |titlecase}}</li>
             <li class="list-group-item">Email:- {{userFromChild.email}}</li>
             <li class="list-group-item">Skill:-
                 @for (skill of userFromChild.skills; track skill) {
                 <div class="badge bg-primary me-1">{{skill}}</div>
                 }
             </li>
-            <li class="list-group-item">Experience:- {{userFromChild.experience}} Years</li>
+            <li class="list-group-item">Joined:- {{userFromChild.joined | date:'dd MMM yyyy'}}</li>
+            <li class="list-group-item">Experience:- {{userFromChild.experience | userExpr }}</li>
             <li class="list-group-item">Location:- {{userFromChild.location}}</li>
+            <li class="list-group-item">Salary:- {{userFromChild.salary |currency : 'INR': 'symbol': '1.0-0'}}</li>
             <li class="list-group-item position-relative">Status:- {{userFromChild.status}}
-                <span [class]="userFromChild.status == 'Active'?'text-success': 'text-danger'">
+            @if (userFromChild.status === 'Active') {
+                <span class="text-success">
                     <i class="bi bi-circle-fill me-1"></i>
+                    Active
                 </span>
+            } @else {
+                <span class="text-danger">
+                    <i class="bi bi-circle-fill me-1"></i>
+                    Inactive
+                </span>
+            }
             </li>
         </ul>
     </div>
@@ -33,5 +43,14 @@
         >Delete
         </button>
         <button type="reset" class="btn btn-secondary ms-2" (click)="resetAction()">Reset</button>
+        <p>Counter: {{ counter }}</p>
+
+        <button
+        class="btn btn-primary"
+        (click)="incrementCounter()">
+        Increment
+        </button>
+        <button type="button" (click)="changeNamewithMarkforCheck()">ChangeName+markForCheck</button>
+        <!-- <p>Observable value - {{time$ |async}}</p> -->
     </div>
 </div>

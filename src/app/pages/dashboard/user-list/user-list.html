@@ -1,5 +1,21 @@
 <div class="mb-3">
+    <div class="mb-3">
 
+    <button
+        type="button"
+        class="btn btn-success me-2"
+        (click)="addUser()">
+        Add User
+    </button>
+
+    <button
+        type="button"
+        class="btn btn-danger"
+        (click)="removeLastUser()">
+        Remove Last User
+    </button>
+
+    </div>
     <button
         class="btn btn-warning"
         (click)="resetAllCards()">
@@ -7,7 +23,27 @@
         Reset All Cards
 
     </button>
+    <button
+    class="btn btn-primary"
+    (click)="changeName()">
+    Change Name
+    </button>
+    <button
+        class="btn btn-warning"
+        (click)="changeUserName()">
+        Change Name
+    </button>
+    <button
+        class="btn btn-danger ms-2"
+        (click)="detectCardChanges()">
+        Detect Changes
+    </button>
 
+    <button
+        class="btn btn-danger ms-2"
+        (click)="changeStatus()">
+        Change Status
+    </button>
 </div>
 <div class="row">
     @for (user of users; track user.id) {
@@ -18,13 +54,11 @@
             (action)="handleAction($event)"
             ></app-user-card>
 
-
-
-        @if (isEditing && user.id == userId) {
-        <div class="alert alert-info mt-3">
-            Editing profile...
-        </div>
-        }  
+            @if (isEditing && user.id == userId) {
+                <div class="alert alert-info mt-3">
+                    Editing profile...
+                </div>
+            }  
         </div>
     }
         <!-- <span class="">
@@ -33,6 +67,15 @@
         </button>
         </span> -->
 </div>
+<hr class="my-4">
+@if (isEditing) {
 
+  <app-user-panel
+    [user]="selectedUser">
+    <p appUserPanelDirective>
+        This content coming form user-list
+    </p>
+  </app-user-panel>
 
+}
 

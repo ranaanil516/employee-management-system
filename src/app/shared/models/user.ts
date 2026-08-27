@@ -7,5 +7,7 @@ export interface User{
     location: string,
     image:string,
     status: string,
+    salary: number,
+    joined: Date,
     skills: string[]
 }
