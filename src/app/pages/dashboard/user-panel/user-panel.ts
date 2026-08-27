@@ -1,16 +1,6 @@
-import {
-  Component,
-  AfterContentInit,
-  AfterContentChecked,
-  AfterViewInit,
-  AfterViewChecked,
-  ContentChild,
-  Input
-} from '@angular/core';
-
-import { UserPanelDirective } from './user-panel-directive';
+import { Component, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { User } from '../../../shared/models/user';
-import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-panel',
@@ -18,49 +8,12 @@ import { FormsModule, NgForm } from '@angular/forms';
   templateUrl: './user-panel.html',
   styleUrl: './user-panel.css'
 })
-export class UserPanel
-  implements
-    AfterContentInit,
-    AfterContentChecked,
-    AfterViewInit,
-    AfterViewChecked {
+export class UserPanel {
 
-  @ContentChild(UserPanelDirective)
-  projectedContent!: UserPanelDirective;
-  @Input() user !: User;
-  userForm!: NgForm;
-
-  checkCount = 0;
-
-  ngAfterContentInit(): void {
-    console.log('UserPanel: ngAfterContentInit');
-
-    console.log(
-      'Projected content:',
-      this.projectedContent
-    );
-  }
-
-  ngAfterContentChecked(): void {
-    console.log('UserPanel: ngAfterContentChecked');
-  }
-
-  ngAfterViewInit(): void {
-    console.log('UserPanel: ngAfterViewInit');
-  }
-
-  ngAfterViewChecked(): void {
-    this.checkCount++;
-
-    console.log(
-      'UserPanel: ngAfterViewChecked',
-      this.checkCount
-    );
-  }
+  @Input() user!: User;
 
   save(): void {
     console.log('--- Save button clicked ---');
     console.log(this.user);
-    
   }
 }
